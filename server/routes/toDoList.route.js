@@ -23,8 +23,16 @@ pool.on('error', (error) => {
 
 toDoListRouter.get('/', (req, res) => {
     console.log('in GET');
-    let 
-})
+    let queryText = `
+    SELECT * FROM "toDoList";
+    `;
+
+    pool.query(queryText).then(result => {
+        res.send(result.rows);
+    }).catch(error => {
+        console.log('Error in toDoListRouter.get in toDoList.route.js', error)
+    });
+});
 
 // POST
 // PUT
