@@ -11,7 +11,7 @@ $.ajax({
     url: '/toDoList'
 }).then(function (response){
     console.log(response);
-    // appendTasks();
+    appendTasks(response);
 }).catch(function(err){
     console.log(err);
     alert( 'Error in getTasks function' );
@@ -22,3 +22,23 @@ $.ajax({
 // PUT
 
 // DELETE
+
+// renderToDOM
+
+function appendTasks(response){
+    $('#toDoTable').empty();
+
+    for (let i = 0; i < response.length; i++){
+        let task = response[i];
+        console.log(response[i])
+        $('#toDoTable').append(`
+        <tr>
+            <td>${task.task}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        
+        `)
+    }
+}
