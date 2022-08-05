@@ -34,8 +34,8 @@ function appendTasks(response){
         $('#toDoTable').append(`
         <tr>
             <td>${task.task}</td>
-            <td></td>
-            <td></td>
+            <td>${task.complete}</td>
+            <td><button>Delete this Task</button></td>
             <td></td>
         </tr>
         
