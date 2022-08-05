@@ -1,3 +1,5 @@
+# GOAL FOR TODAY #
+- Get done with the PUTS. 
 
 ## Weekend Challenge: SQL To-Do List
 
@@ -14,12 +16,20 @@ You are going to create a 'TO DO' application. This type of application is very 
 **Here are the specific components for the challenge:**
 
 * Create a front end experience that allows a user to create a Task.
+  - [] I need inputs on the html that allow for a task. 
 * When the Task is created, it should be stored inside of a database (SQL)
+  - [] When the task is created, it is sent to the database via PG and the Pool.
 * Whenever a Task is created the front end should refresh to show all tasks that need to be completed.
+  - [] When a task is added, it needs to run the 'GetTasks' function again.
 * Each Task should have an option to 'Complete' or 'Delete'.
+  - [] When a task is added to the DOM, add a complete and delete button to them
+    - [] Complete and Delete button are dynamic so they need to be listened to the special wayyyy.
 * When a Task is complete, its visual representation should change on the front end. For example, the background of the task container could change from gray to green. The complete option should be  'checked off'. Each of these are accomplished in CSS, but will need to hook into logic to know whether or not the task is complete.
+  - [] if option is checked off, turn green. 
 * Whether or not a Task is complete should also be stored in the database.
+  - [] When the complete button is clicked, use pool pg to store the fact that it's complete in the database. (set complete to true)
 * Deleting a Task should remove it both from the front end as well as the Database.
+  - [] When the delete button is clicked it should send some query text that says like update or something.
 
 ### Styling
 
