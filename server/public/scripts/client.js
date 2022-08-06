@@ -32,34 +32,16 @@ function inputTask(){
         data: getTheTask,
     }).then(function (response){
         console.log(response);
+        getTasks();
     }).catch( function(err) {
         console.log(err);
         alert('Error in POST');
     })
 }
 
-
-// function saveKoala( newKoala ){
-//     console.log( 'in saveKoala', newKoala );
-//     // ajax call to server to add koalas
-//     $.ajax({
-//       method: 'POST',
-//       url: '/koalas',
-//       data: newKoala
-//     }).then(function(response) {
-//       console.log(response)
-//       getKoalas(response);
-//     }).catch(function(err) {
-//       console.log(err)
-//       alert('Error in POST')
-//     });
-//   }
-// PUT
-
 // DELETE
 
 // renderToDOM
-
 function appendTasks(response){
     $('#toDoTable').empty();
 
@@ -69,10 +51,9 @@ function appendTasks(response){
         $('#toDoTable').append(`
         <tr>
             <td>${task.task}</td>
-            <td>${task.complete}</td>
+            <td><button>Complete</button></td>
             <td><button>Delete this Task</button></td>
         </tr>
-        
         `)
     }
 }

@@ -18,9 +18,9 @@ You are going to create a 'TO DO' application. This type of application is very 
 * Create a front end experience that allows a user to create a Task.
   - [x] I need inputs on the html that allow for a task. 
 * When the Task is created, it should be stored inside of a database (SQL)
-  - [] When the task is created, it is sent to the database via PG and the Pool.
+  - [x] When the task is created, it is sent to the database via PG and the Pool.
 * Whenever a Task is created the front end should refresh to show all tasks that need to be completed.
-  - [] When a task is added, it needs to run the 'GetTasks' function again.
+  - [x] When a task is added, it needs to run the 'GetTasks' function again.
 * Each Task should have an option to 'Complete' or 'Delete'.
   - [] When a task is added to the DOM, add a complete and delete button to them
     - [] Complete and Delete button are dynamic so they need to be listened to the special wayyyy.
