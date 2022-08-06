@@ -16,7 +16,7 @@ You are going to create a 'TO DO' application. This type of application is very 
 **Here are the specific components for the challenge:**
 
 * Create a front end experience that allows a user to create a Task.
-  - [] I need inputs on the html that allow for a task. 
+  - [x] I need inputs on the html that allow for a task. 
 * When the Task is created, it should be stored inside of a database (SQL)
   - [] When the task is created, it is sent to the database via PG and the Pool.
 * Whenever a Task is created the front end should refresh to show all tasks that need to be completed.

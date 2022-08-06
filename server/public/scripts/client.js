@@ -1,6 +1,7 @@
 $(document).ready(function(){
     console.log('jQuery sourced.');
     getTasks();
+    $('#submitBtn').on('click', inputTask);
 })
 
 // GET
@@ -17,8 +18,42 @@ $.ajax({
     alert( 'Error in getTasks function' );
 })
 };
-// POST
 
+// POST
+function inputTask(){
+    console.log( 'In inputTask function' );
+    let getTheTask = {
+       task: $('#toDo').val(),
+    }
+    // console.log(getTheTask);
+    $.ajax({
+        method: 'POST',
+        url: '/toDoList',
+        data: getTheTask,
+    }).then(function (response){
+        console.log(response);
+    }).catch( function(err) {
+        console.log(err);
+        alert('Error in POST');
+    })
+}
+
+
+// function saveKoala( newKoala ){
+//     console.log( 'in saveKoala', newKoala );
+//     // ajax call to server to add koalas
+//     $.ajax({
+//       method: 'POST',
+//       url: '/koalas',
+//       data: newKoala
+//     }).then(function(response) {
+//       console.log(response)
+//       getKoalas(response);
+//     }).catch(function(err) {
+//       console.log(err)
+//       alert('Error in POST')
+//     });
+//   }
 // PUT
 
 // DELETE
@@ -36,7 +71,6 @@ function appendTasks(response){
             <td>${task.task}</td>
             <td>${task.complete}</td>
             <td><button>Delete this Task</button></td>
-            <td></td>
         </tr>
         
         `)

@@ -36,6 +36,23 @@ toDoListRouter.get('/', (req, res) => {
 });
 
 // POST
+
+toDoListRouter.post('/', (req, res) => {
+    let queryText = `
+        INSERT INTO "toDoList" ("task")
+        VALUES ($1);`;
+    let queryValues = [
+        req.body.task,
+    ]
+    console.log(req.body)
+    pool.query(queryText, queryValues)
+        .then( result => {
+            res.sendStatus(200);
+        }).catch( (err) => {
+            console.log(err)
+            res.sendStatus(500) //send 500
+        })
+});
 // PUT
 // DELETE
 
