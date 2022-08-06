@@ -1,3 +1,10 @@
-node_modules/
+# OSX files
 .DS_Store
-package-lock.json
+
+# Node modules
+node_modules/
+
+# Logs
+logs
+*.log
+npm-debug.log*

@@ -4,8 +4,8 @@
   "description": "[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1", 
-    "start": "node server/server.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": ""
   },
   "repository": {
     "type": "git",
@@ -17,9 +17,5 @@
   "bugs": {
     "url": "https://github.com/Kassandraeam/weekend-sql-to-do-list/issues"
   },
-  "homepage": "https://github.com/Kassandraeam/weekend-sql-to-do-list#readme",
-  "dependencies": {
-    "express": "^4.18.1",
-    "pg": "^8.7.3"
-  }
+  "homepage": "https://github.com/Kassandraeam/weekend-sql-to-do-list#readme"
 }
