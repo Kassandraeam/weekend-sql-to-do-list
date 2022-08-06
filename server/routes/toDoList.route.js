@@ -1,4 +1,5 @@
 
+const { query } = require('express');
 const express = require('express');
 const toDoListRouter = express.Router();
 
@@ -54,7 +55,42 @@ toDoListRouter.post('/', (req, res) => {
         })
 });
 // PUT
+
 // DELETE
 
+toDoListRouter.delete('/:id', (req, res) => {
+    const id = req.params.id;
+    console.log(id);
+
+    const queryText = `
+    DELETE FROM "toDoList"
+    WHERE "id" = $1;
+    `;
+    pool.query(queryText, [id])
+        .then( (result) => {
+            res.sendStatus(200);
+        }).catch( (err) => {
+            console.log(err);
+            res.sendStatus(500);
+        });
+});
 
 module.exports = toDoListRouter;
+
+// koalaRouter.delete('/:id', (req, res) => {
+//     const id = req.params.id
+//     console.log(id);
+    
+//     const queryText = 
+//     `
+//     DELETE FROM "koalas"
+//     WHERE "id" = $1;
+//     `;
+//     pool.query(queryText, [id])
+//         .then( (result) => {
+//             res.sendStatus(200);
+//         }).catch( (err) => {
+//             console.log(err);
+//             res.sendStatus(500);
+//         });
+// })
