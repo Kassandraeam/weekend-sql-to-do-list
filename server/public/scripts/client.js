@@ -49,8 +49,8 @@ function appendTasks(response){
         let task = response[i];
         console.log(response[i])
         $('#toDoTable').append(`
-        <tr>
-            <td data-id=${task.id}>${task.task}</td>
+        <tr data-id=${task.id}>
+            <td>${task.task}</td>
             <td><button>Complete</button></td>
             <td><button class='deleteBtn'>Delete this Task</button></td>
         </tr>
@@ -74,7 +74,7 @@ function handleDelete() {
 
     $.ajax({
         method: 'DELETE',
-        url: '/toDoList/${id}',
+        url: `/toDoList/${id}`,
     }).then(function(response){
         console.log(response);
         getTasks(response);
