@@ -1,12 +1,9 @@
-// const { response } = require("express");
-
 $(document).ready(function(){
     console.log('jQuery sourced.');
     getTasks();
     $('#submitBtn').on('click', inputTask);
     $('#toDoTable').on('click', '.deleteBtn', handleDelete);
     $('#toDoTable').on('click', '.completeBtn', handleComplete);
-    // $('#toDoTable').on('click', '.completeBtn', turnGreen)
 })
 
 // GET
@@ -30,7 +27,6 @@ function inputTask(){
     let getTheTask = {
        task: $('#toDo').val(),
     }
-    // console.log(getTheTask);
     $.ajax({
         method: 'POST',
         url: '/toDoList',
@@ -44,38 +40,32 @@ function inputTask(){
     })
 }
 
-
-// renderToDOM
 function appendTasks(response){
     $('#toDoTable').empty();
-
     for (let i = 0; i < response.length; i++){
         let task = response[i];
         console.log(response[i])
+        if (task.complete === false) {
         $('#toDoTable').append(`
         <tr data-id=${task.id}>
-            <td>${task.task}</td>
+            <td class = "incomplete">${task.task}</td>
             <td><button class='completeBtn'>Complete</button></td>
             <td><button class='deleteBtn'>Delete this Task</button></td>
         </tr>
         `)
-        // if (response.task === true){
-        //     $(this).color = "green"
-        //     getTasks(response);
-        // }
+        } else {
+            $('#toDoTable').append(`
+            <tr data-id=${task.id}>
+                <td class = "completed">${task.task}</td>
+                <td><button class='completeBtn'>Complete</button></td>
+                <td><button class='deleteBtn'>Delete this Task</button></td>
+            </tr>
+            `)
+        }
     }
 };
 
-// PUT will update the database (This is the completed button).
-// So when I hit complete button, it will update the database and also change the button to green.
-
 // DELETE
-// When the delete button is hit it will remove it from the Database and also refresh the DOM.
-
-// I need to make a click listener for the delete button. Did that
-
-// DELETE
-
 function handleDelete() {
     console.log('Task has been deleted');
 
@@ -100,10 +90,7 @@ function handleComplete(){
 
     const id = $(this).closest('tr').data('id');
     console.log(id);
-    //confirmed that the click works.
-    const  task = $(this).text();
-    console.log(task);
-    turnGreen();
+  
     $.ajax({
         method: 'PUT',
         url: `/toDoList/${id}`,
@@ -116,27 +103,3 @@ function handleComplete(){
     })
 }
 
-// if complete is true, when the page refreshes, turn green.
-
-function turnGreen(){
-    console.log('This should be turning something green.')
-    $(this).closest('td').css({"color": "green"});
-};
-
-// function handleDelete() {
-//     console.log('deleted');
-  
-//     const id = $(this).closest('tr').data('id');
-//     console.log(id);
-  
-//     $.ajax({
-//       method: 'DELETE',
-//       url: `/koalas/${id}`
-//     }).then(function(response) {
-//       console.log(response)
-//       getKoalas(response);
-//     }).catch(function(err) {
-//       console.log(err);
-//       alert('Error in Delete...')
-//     });
-//   }

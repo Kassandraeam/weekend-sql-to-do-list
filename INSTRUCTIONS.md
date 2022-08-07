@@ -25,7 +25,7 @@ You are going to create a 'TO DO' application. This type of application is very 
   - [x] When a task is added to the DOM, add a complete and delete button to them
     - [x] Complete and Delete button are dynamic so they need to be listened to the special wayyyy.
 * When a Task is complete, its visual representation should change on the front end. For example, the background of the task container could change from gray to green. The complete option should be  'checked off'. Each of these are accomplished in CSS, but will need to hook into logic to know whether or not the task is complete.
-  - [] if option is checked off, turn green. 
+  - [x] if option is checked off, turn green. 
 * Whether or not a Task is complete should also be stored in the database.
   - [x] When the complete button is clicked, use pool pg to store the fact that it's complete in the database. (set complete to true)
 * Deleting a Task should remove it both from the front end as well as the Database.
@@ -34,9 +34,9 @@ You are going to create a 'TO DO' application. This type of application is very 
 ### Styling
 
 Use CSS styling to move the aesthetic of the page beyond the vanilla HTML look:
-  - background color of the page
-  - font family and size
-  - text color & or background color of tasks *to show whether or not they have been completed*
+  - [] background color of the page
+  - [] font family and size
+  - [] text color & or background color of tasks *to show whether or not they have been completed*
 
 ### Approach
 

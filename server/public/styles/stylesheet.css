@@ -1,0 +1,12 @@
+.incomplete {
+    background-color: rgb(241, 31, 31);
+}
+.completed {
+    background-color: rgb(40, 162, 83);
+}
+
+body {
+    background-color: cadetblue;
+    font-family: 'Times New Roman', Times, serif;
+}
+

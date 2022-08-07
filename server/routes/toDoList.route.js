@@ -1,4 +1,3 @@
-// const { query } = require('express');
 const express = require('express');
 const toDoListRouter = express.Router();
 
@@ -21,11 +20,10 @@ pool.on('error', (error) => {
 });
 
 // GET
-
 toDoListRouter.get('/', (req, res) => {
     console.log('in GET');
     let queryText = `
-    SELECT * FROM "toDoList" ORDER BY "complete";
+    SELECT * FROM "toDoList" ORDER BY "id";
     `;
 
     pool.query(queryText).then(result => {
@@ -36,7 +34,6 @@ toDoListRouter.get('/', (req, res) => {
 });
 
 // POST
-
 toDoListRouter.post('/', (req, res) => {
     let queryText = `
         INSERT INTO "toDoList" ("task")
@@ -55,7 +52,6 @@ toDoListRouter.post('/', (req, res) => {
 });
 
 // DELETE
-
 toDoListRouter.delete('/:id', (req, res) => {
     const id = req.params.id;
     console.log(id);
@@ -94,21 +90,3 @@ toDoListRouter.put('/:id', (req, res) => {
 })
 
 module.exports = toDoListRouter;
-
-// koalaRouter.delete('/:id', (req, res) => {
-//     const id = req.params.id
-//     console.log(id);
-    
-//     const queryText = 
-//     `
-//     DELETE FROM "koalas"
-//     WHERE "id" = $1;
-//     `;
-//     pool.query(queryText, [id])
-//         .then( (result) => {
-//             res.sendStatus(200);
-//         }).catch( (err) => {
-//             console.log(err);
-//             res.sendStatus(500);
-//         });
-// })
