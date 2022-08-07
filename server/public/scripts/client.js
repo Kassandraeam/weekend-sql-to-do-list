@@ -1,9 +1,12 @@
+// const { response } = require("express");
+
 $(document).ready(function(){
     console.log('jQuery sourced.');
     getTasks();
     $('#submitBtn').on('click', inputTask);
     $('#toDoTable').on('click', '.deleteBtn', handleDelete);
-    $('#toDoTable').on('click', '.completeBtn', handleComplete)
+    $('#toDoTable').on('click', '.completeBtn', handleComplete);
+    // $('#toDoTable').on('click', '.completeBtn', turnGreen)
 })
 
 // GET
@@ -56,6 +59,10 @@ function appendTasks(response){
             <td><button class='deleteBtn'>Delete this Task</button></td>
         </tr>
         `)
+        // if (response.task === true){
+        //     $(this).color = "green"
+        //     getTasks(response);
+        // }
     }
 };
 
@@ -94,18 +101,27 @@ function handleComplete(){
     const id = $(this).closest('tr').data('id');
     console.log(id);
     //confirmed that the click works.
-
+    const  task = $(this).text();
+    console.log(task);
+    turnGreen();
     $.ajax({
         method: 'PUT',
         url: `/toDoList/${id}`,
     }).then(function(response){
         console.log(response);
-        // getTasks(response);
+        getTasks(response);
     }).catch(function(err){
         console.log(err);
         alert('Error in PUT on client side');
     })
 }
+
+// if complete is true, when the page refreshes, turn green.
+
+function turnGreen(){
+    console.log('This should be turning something green.')
+    $(this).closest('td').css({"color": "green"});
+};
 
 // function handleDelete() {
 //     console.log('deleted');

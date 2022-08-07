@@ -25,7 +25,7 @@ pool.on('error', (error) => {
 toDoListRouter.get('/', (req, res) => {
     console.log('in GET');
     let queryText = `
-    SELECT * FROM "toDoList";
+    SELECT * FROM "toDoList" ORDER BY "complete";
     `;
 
     pool.query(queryText).then(result => {
