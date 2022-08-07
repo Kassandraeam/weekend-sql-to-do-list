@@ -3,6 +3,7 @@ $(document).ready(function(){
     getTasks();
     $('#submitBtn').on('click', inputTask);
     $('#toDoTable').on('click', '.deleteBtn', handleDelete);
+    $('#toDoTable').on('click', '.completeBtn', handleComplete)
 })
 
 // GET
@@ -51,7 +52,7 @@ function appendTasks(response){
         $('#toDoTable').append(`
         <tr data-id=${task.id}>
             <td>${task.task}</td>
-            <td><button>Complete</button></td>
+            <td><button class='completeBtn'>Complete</button></td>
             <td><button class='deleteBtn'>Delete this Task</button></td>
         </tr>
         `)
@@ -59,12 +60,14 @@ function appendTasks(response){
 };
 
 // PUT will update the database (This is the completed button).
-// So when I hit complete button, it will will update the database and also change the button to green.
+// So when I hit complete button, it will update the database and also change the button to green.
 
 // DELETE
 // When the delete button is hit it will remove it from the Database and also refresh the DOM.
 
 // I need to make a click listener for the delete button. Did that
+
+// DELETE
 
 function handleDelete() {
     console.log('Task has been deleted');
@@ -81,6 +84,26 @@ function handleDelete() {
     }).catch(function(err){
         console.log(err);
         alert('Error in delete on client side');
+    })
+};
+
+// PUT
+function handleComplete(){
+    console.log('Task has been completed');
+
+    const id = $(this).closest('tr').data('id');
+    console.log(id);
+    //confirmed that the click works.
+
+    $.ajax({
+        method: 'PUT',
+        url: `/toDoList/${id}`,
+    }).then(function(response){
+        console.log(response);
+        // getTasks(response);
+    }).catch(function(err){
+        console.log(err);
+        alert('Error in PUT on client side');
     })
 }
 

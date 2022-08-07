@@ -1,5 +1,4 @@
-
-const { query } = require('express');
+// const { query } = require('express');
 const express = require('express');
 const toDoListRouter = express.Router();
 
@@ -54,7 +53,6 @@ toDoListRouter.post('/', (req, res) => {
             res.sendStatus(500) //send 500
         })
 });
-// PUT
 
 // DELETE
 
@@ -74,6 +72,26 @@ toDoListRouter.delete('/:id', (req, res) => {
             res.sendStatus(500);
         });
 });
+
+// PUT
+toDoListRouter.put('/:id', (req, res) => {
+    const id = req.params.id;
+    console.log(id);
+    
+    const queryText = `
+    UPDATE "toDoList" 
+    SET "complete"=TRUE 
+    WHERE "id"= $1;
+    `
+
+    pool.query(queryText, [id])
+        .then( (result) => {
+            res.sendStatus(200);
+        }).catch ( (err) => {
+            console.log(err);
+            res.sendStatus(500);
+        })
+})
 
 module.exports = toDoListRouter;
 
